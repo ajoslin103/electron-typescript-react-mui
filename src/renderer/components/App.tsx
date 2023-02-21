@@ -2,6 +2,7 @@ import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import React from "react";
 import theme from "../theme";
 import Greetings from "./Greetings";
+import KonvaSample from "./KonvaSample";
 
 export default function App(): JSX.Element {
   return (
@@ -16,7 +17,8 @@ export default function App(): JSX.Element {
       >
         <main>
           {/* This is where your app content should go */}
-          <Greetings />
+          {/* <Greetings /> */}
+          <KonvaSample />
         </main>
       </Box>
     </ThemeProvider>

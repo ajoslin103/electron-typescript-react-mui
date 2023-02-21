@@ -4,6 +4,13 @@ import * as url from "url";
 
 let mainWindow: Electron.BrowserWindow | null;
 
+// https://www.npmjs.com/package/electron-debug
+import debug from "electron-debug";
+debug({
+  isEnabled: true,
+  showDevTools: process.env.NODE_ENV !== "production",
+});
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1100,

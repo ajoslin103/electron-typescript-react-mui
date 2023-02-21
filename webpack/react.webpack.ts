@@ -1,6 +1,6 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
-import { Configuration as WebpackConfiguration } from "webpack";
+import { Configuration as WebpackConfiguration, IgnorePlugin } from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 
 const rootPath = path.resolve(__dirname, "..");
@@ -48,6 +48,10 @@ const config: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: path.resolve(rootPath, "index.html") }),
+    new IgnorePlugin({
+      resourceRegExp: /canvas|jsdom/,
+      contextRegExp: /konva/,
+    }),
   ],
 };
 
