@@ -1,6 +1,9 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
-import { Configuration as WebpackConfiguration, IgnorePlugin } from "webpack";
+import {
+  Configuration as WebpackConfiguration,
+  NormalModuleReplacementPlugin,
+} from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 
 const rootPath = path.resolve(__dirname, "..");
@@ -48,10 +51,7 @@ const config: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: path.resolve(rootPath, "index.html") }),
-    new IgnorePlugin({
-      resourceRegExp: /canvas|jsdom/,
-      contextRegExp: /konva/,
-    }),
+    new NormalModuleReplacementPlugin(/^(?!@n-api\/canvas$).*\bcanvas\b.*/, "@napi-rs/canvas"),
   ],
 };
 

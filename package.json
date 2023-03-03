@@ -14,6 +14,8 @@
     "build:run": "npm-run-all build start:electron",
     "build:electron": "webpack --config webpack/electron.webpack.ts --mode=production",
     "build:react": "webpack --config webpack/react.webpack.ts --mode=production",
+    "darwin": "npm-run-all build package:darwin",
+    "package:darwin": "electron-builder --mac --x64 --dir",
     "package": "npm-run-all build package:dist",
     "package:dist": "electron-builder --dir"
   },
@@ -24,6 +26,7 @@
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.9.1",
+    "@napi-rs/canvas": "^0.1.37",
     "electron-debug": "^3.2.0",
     "konva": "^8.4.2",
     "react": "^18.2.0",
