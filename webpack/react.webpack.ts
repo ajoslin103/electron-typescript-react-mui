@@ -49,12 +49,9 @@ const config: Configuration = {
     path: path.resolve(rootPath, "dist/renderer"),
     filename: "js/[name].js",
   },
-  externals: {
-    canvas: "commonjs canvas",
-  },
   plugins: [
     new HtmlWebpackPlugin({ template: path.resolve(rootPath, "index.html") }),
-    new NormalModuleReplacementPlugin(/\bcanvas\b/, "@napi-rs/canvas"),
+    new NormalModuleReplacementPlugin(/^(?!@n-api\/canvas$).*\bcanvas\b.*/, "@napi-rs/canvas"),
   ],
 };
 
